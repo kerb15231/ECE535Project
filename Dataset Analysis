@@ -1,0 +1,53 @@
+Datasets Collected
+
+UnityEyes
+MPIIGaze
+
+Initial Analysis
+
+UnityEyes
+
+Dataset Overview 
+The UnityEyes dataset is a synthetic gaze estimation dataset containing rendered eye region images with labeled gaze direction and head pose. It includes thousands of examples generated under different lighting, gaze direction, and head positions. 
+
+Basic Data Characteristics
+Since UnityEyes is synthetic, it avoids some privacy issues from real eye data but it might not generalize to diverse real-world users. Its lighting and texture variety are fairly limited, which could make models which train on it vulnerable to spoofing or poor performance on unseen conditions.
+
+Security and Privacy
+Synthetic datasets like UnityEyes reduce direct privacy risk, but might hide vulnerabilities by lacking realistic eye features. A model trained only on this dataset might be susceptible to adversarial attacks that exploit differences between synthetic and real eyes.
+
+MPIIGaze
+
+Dataset Overview 
+The MPIIGaze dataset is a real-world gaze estimation dataset collected from 15 participants using laptop webcams over several months in everyday environments. It contains over 200,000 eye images with corresponding gaze and head pose annotations. The data captures natural variability in lighting, head pose, and appearance across different individuals and sessions.
+
+Basic Data Characteristics
+Unlike synthetic datasets, MPIIGaze provides realistic samples that reflect the diversity and noise of real-world conditions. However, it has a limited number of participants which mean there is likely demographic bias. Variations in lighting and camera quality could also add noise that would affect model accuracy and generalization.
+
+Security and Privacy
+Since MPIIGaze uses real images of participants, it raises potential privacy concerns related to biometric and behavioral data. Gaze patterns can reveal sensitive personal traits or activities and storing this data could risk identity exposure if it is not anonymized. On the other hand, realism helps to evaluate security vulnerabilities more accurately since the models are trained on real data and are more representative of real world attack surfaces.
+
+
+References
+
+Papers:
+
+[1] L. Du, Y. Liu, J. Jia, and G. Lan, “SecureGaze: Defending Gaze Estimation Against
+Backdoor Attacks,” in Proceedings of the 23rd ACM Conference on Embedded
+Networked Sensor Systems. Association for Computing Machinery, pp. 102–115, 2025,
+https://doi.org/10.1145/3715014.3722071
+
+[2] M. Goldblum et al., "Dataset Security for Machine Learning: Data Poisoning, Backdoor
+Attacks, and Defenses," in IEEE Transactions on Pattern Analysis and Machine
+Intelligence, vol. 45, no. 2, pp. 1563-1580, 1 Feb. 2023,
+https://doi.org/10.1109/TPAMI.2022.3162397 
+
+[3] Wood, E., Baltrušaitis, T., Morency, L.-P., Robinson, P., & Bulling, A. (2016). Learning an Appearance-Based Gaze Estimator from One Million Synthesised Images (ETRA ’16). University of Cambridge Computer Laboratory, accessed Oct 2025 https://www.cl.cam.ac.uk/research/rainbow/projects/unityeyes/
+
+[4] Zhang, X., Sugano, Y., Fritz, M. & Bulling, A., “Appearance-Based Gaze Estimation in the Wild (MPIIGaze)”, Max Planck Institute for Informatics, accessed Oct 2025, https://www.mpi-inf.mpg.de/departments/computer-vision-and-machine-learning/research/gaze-based-human-computer-interaction/appearance-based-gaze-estimation-in-the-wild
+
+Datasets:
+
+[1] https://www.cl.cam.ac.uk/research/rainbow/projects/unityeyes/
+
+[2] https://darus.uni-stuttgart.de/dataset.xhtml?persistentId=doi:10.18419/darus-3230
