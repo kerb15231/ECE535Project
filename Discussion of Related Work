@@ -1,0 +1,35 @@
+Discussion of Related Work
+
+Introduction
+	The purpose of this section is to review existing and relevant research on backdoor attacks and their effects on Gaze Estimation datasets. The first paper describes a backdoor attack itself, the second provides a defense mechanism, and the third is an overview of the attack, its defenses, and repairing. This aids in our project as a way to review what we will attempt to recreate while also providing a foundation of knowledge on backdoor attacks, the effects, and defenses, as a whole. 
+Summary of “BadNets: Evaluating Backdooring Attacks on Deep Neural Networks” 
+BadNet introduces an attack scenario in which the training process of a CNN is either fully outsourced to an untrusted third party cloud service who in turn provides a backdoored model, or a user uses a backdoored pre-trained model from an online library. They performed their attack in various experiments such as MNIST digit recognition, traffic sign detection, and transfer learning. 
+In these experiments, they inserted a Post-it on real images in order to make the model misclassify them. For example, they put a square on a stop sign and trained the model to classify it as a speed limit sign instead. They found BadNets was able to reliably and maliciously misclassify images on real world scenarios and overall remained stealthy. 
+They present two possible forms of defense, the first being to securely host and distribute deep learning models in online repositories to prevent tempering, and two, to develop methods of detecting backdoors in maliciously trained models. 
+
+Summary of “SecureGaze: Defending Gaze Estimation Against Backdoor Attacks”
+SecureGaze is a solution which aims to protect gaze estimation models from backdoor attacks. Deep learning based gaze estimation models require large-scale eye-tracking datasets, but since these are difficult to collect, many developers will gather unverified public datasets for training purposes, outsource from a third party, or use pretrained models. These practices are often what exposes estimation models to backdoor attacks. Attackers will inject hidden triggers by poisoning the training data, which creates a backdoor vulnerability. These hidden triggers could be objects inserted into images in the dataset, like red squares, or objects in the gaze dataset images themselves such as glasses, masks, scars, freckles, or skin tones.
+The main contributions of this paper are the differences between backdoored gaze estimation and classification models, SecureGaze, which is a method of defense against backdoor attacks for gaze estimation models, and extensive experiments in both digital and physical worlds to test SecureGaze against six backdoor attacks. SecureGaze outperforms seven adapted classification defenses to gaze estimation across all tested scenarios.
+Some strengths of this paper are that SecureGaze does not introduce additional run time latency to the gaze estimation model after deployment. It also does not need to enumerate all potential targets, making it more efficient than existing solutions. It also uses datasets which are publically available and likely to be used in a gaze estimation model, rather than creating their own, leading to its practical application in the field. Lastly, it also finds attacks on SecureGaze and analyzes their effectiveness and creates defenses. For weaknesses, SecureGaze uses a fixed threshold for backdoor identification which could be not effective if an attacker uses a large trigger. More testing also needs to be done on the impact of different hyperparameter values on performance. 
+
+Summary of “Dataset Security for Machine Learning: Data Poisoning, Backdoor Attacks, and Defenses”
+
+This paper reviews potential attacks against datasets used for machine learning. One of the attacks described are backdoor attacks. In this attack, an adversary poisons a model so that the presence of a trigger during testing makes the model behave a certain way. This trigger is typically able to be applied to any input, such as a small patch or sticker on an image or a specific phrase in a language model. For a successful attack, it must go undetected when the model is actually deployed, meaning that the model has to behave normally in the absence of the trigger, such as during normal testing. The attacks can be applied on object recognition and detection models, generative models, in reinforcement learning, and model watermarking. The attacks can be done both during training and on pre-trained models. For the latter, an attacker selects an input region along with neurons that are sensitive to changes in the region, and activates them. This alters the model as it modifies its architecture. 
+	Some defenses are to identify backdoored models through trigger reconstruction, trigger agnostic detection, and trigger detection during deployment. In terms of repairment, some potential methods are patching known triggers after they have been identified and trigger agnostic backdoor removal.
+
+
+
+References
+
+[1] T. Gu, K. Liu, B. Dolan-Gavitt, and S. Garg, "BadNets: Evaluating Backdooring Attacks on Deep Neural Networks," IEEE Access, vol. 7, pp. 47230–47244, 2019, https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9743317 
+
+[2] L. Du, Y. Liu, J. Jia, and G. Lan, “SecureGaze: Defending Gaze Estimation Against
+Backdoor Attacks,” in Proceedings of the 23rd ACM Conference on Embedded
+Networked Sensor Systems. Association for Computing Machinery, pp. 102–115, 2025,
+https://doi.org/10.1145/3715014.3722071
+
+[3] M. Goldblum et al., "Dataset Security for Machine Learning: Data Poisoning, Backdoor
+Attacks, and Defenses," in IEEE Transactions on Pattern Analysis and Machine
+Intelligence, vol. 45, no. 2, pp. 1563-1580, 1 Feb. 2023,
+https://doi.org/10.1109/TPAMI.2022.3162397 
+
